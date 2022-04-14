@@ -1,5 +1,6 @@
 import 'package:dart_basics/delimeters_calculator.dart';
 import 'package:dart_basics/primes.dart';
+import 'package:dart_basics/binary_conversion.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -97,5 +98,157 @@ void main() {
     expect(primes.primeFactors(0), []);
     // Negative
     expect(primes.primeFactors(-7), []);
+  });
+
+  test('binary', () {
+    final conversion = BinaryConversion();
+    // Zero
+    expect(conversion.toBinary(0), []);
+    expect(conversion.fromBinary([0]), 0);
+    expect(conversion.fromBinary([]), 0);
+    // One
+    expect(conversion.toBinary(1), [1]);
+    expect(conversion.fromBinary([1]), 1);
+    // Simple
+    expect(conversion.toBinary(35), [1, 0, 0, 0, 1, 1]);
+    expect(conversion.fromBinary([1, 0, 0, 0, 1, 1]), 35);
+    // Large
+    expect(conversion.toBinary(2647539869778898888), [
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]);
+    expect(
+        conversion.fromBinary([
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]),
+        2647539869778898888);
+    // Negative
+    expect(conversion.toBinary(-465), []);
+    // Too long
+    expect(conversion.fromBinary(Iterable<int>.generate(65).toList()),
+        BinaryConversion().invalid);
+    // Not in range
+    expect(conversion.fromBinary([0, 1, 0, 1, 2]), BinaryConversion().invalid);
   });
 }
