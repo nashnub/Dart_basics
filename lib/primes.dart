@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 class Primes {
   List<int> primeFactors(int number) {
-    var result = <int>[];
+    final result = <int>[];
     if (number <= 1) {
       return result;
     }
