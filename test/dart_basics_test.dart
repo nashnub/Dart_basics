@@ -4,6 +4,13 @@ import 'package:dart_basics/binary_conversion.dart';
 import 'package:test/test.dart';
 
 void main() {
+  gcdTest();
+  lcmTest();
+  primesTest();
+  binaryTest();
+}
+
+void gcdTest() {
   test('gcd', () {
     final dc = DelimetersCalculator();
     // Sorted
@@ -43,7 +50,9 @@ void main() {
     // Empty
     expect(dc.gcd([]), dc.invalid);
   });
+}
 
+void lcmTest() {
   test('lcm', () {
     final dc = DelimetersCalculator();
     // Sorted
@@ -83,7 +92,9 @@ void main() {
     // Empty
     expect(dc.lcm([]), dc.invalid);
   });
+}
 
+void primesTest() {
   test('primes', () {
     final primes = Primes();
     // Simple
@@ -99,7 +110,9 @@ void main() {
     // Negative
     expect(primes.primeFactors(-7), []);
   });
+}
 
+void binaryTest() {
   test('binary', () {
     final conversion = BinaryConversion();
     // Zero
