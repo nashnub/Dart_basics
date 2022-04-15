@@ -20,9 +20,10 @@ class BinaryConversion {
     if (!binary.every((element) => (element == 0) || (element == 1))) {
       return invalid;
     }
+    binary = binary.reversed.toList();
     var result = 0;
     for (var i = 0; i < binary.length; ++i) {
-      result += binary[binary.length - 1 - i] * (1 << i);
+      result += binary[i] * (1 << i);
     }
     return result;
   }
