@@ -1,6 +1,7 @@
 import 'package:dart_basics/delimeters_calculator.dart';
 import 'package:dart_basics/primes.dart';
 import 'package:dart_basics/binary_conversion.dart';
+import 'package:dart_basics/string_conversion.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -8,6 +9,7 @@ void main() {
   lcmTest();
   primesTest();
   binaryTest();
+  stringToNumsTest();
 }
 
 void gcdTest() {
@@ -263,5 +265,25 @@ void binaryTest() {
         BinaryConversion().invalid);
     // Not in range
     expect(conversion.fromBinary([0, 1, 0, 1, 2]), BinaryConversion().invalid);
+  });
+}
+
+void stringToNumsTest() {
+  test('stringToNums', () {
+    final conversion = StringCoversion();
+    // Ints
+    expect(conversion.stringToNums('1 2'), [1, 2]);
+    expect(conversion.stringToNums('15 three 4 some'), [15, 4]);
+    // Negative ints
+    expect(conversion.stringToNums('8 -11 day'), [8, -11]);
+    // Doubles
+    expect(conversion.stringToNums('6 4.762'), [6, 4.762]);
+    expect(conversion.stringToNums('7.0 one 6.091 some'), [7.0, 6.091]);
+    // Negative doubles
+    expect(conversion.stringToNums('-19.34 word -6.12'), [-19.34, -6.12]);
+    // Empty
+    expect(conversion.stringToNums(''), []);
+    // Bad nums
+    expect(conversion.stringToNums('23.45% k 6.7 -6.+56 7/3'), [6.7]);
   });
 }

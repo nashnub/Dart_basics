@@ -1,6 +1,7 @@
 import 'package:dart_basics/binary_conversion.dart';
 import 'package:dart_basics/delimeters_calculator.dart';
 import 'package:dart_basics/primes.dart';
+import 'package:dart_basics/string_conversion.dart';
 
 void main(List<String> arguments) {
   // Excercise 2.1 - gcd
@@ -36,5 +37,12 @@ void main(List<String> arguments) {
     const number = [1, 1, 1, 1, 0, 0, 0];
     final result = BinaryConversion().fromBinary(number);
     print('decimal of $number equals $result');
+  }
+
+  // Excercise 2.3 - string to nums
+  {
+    const str = '1 2 one';
+    final result = StringCoversion().stringToNums(str);
+    print('nums of $str are $result');
   }
 }
