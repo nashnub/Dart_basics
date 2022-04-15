@@ -3,6 +3,7 @@ import 'package:dart_basics/primes.dart';
 import 'package:dart_basics/binary_conversion.dart';
 import 'package:dart_basics/string_conversion.dart';
 import 'package:dart_basics/point.dart';
+import 'package:dart_basics/math.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -14,6 +15,7 @@ void main() {
   tokensCountTest();
   digitsCount();
   pointsDistance();
+  nthRoot();
 }
 
 void gcdTest() {
@@ -364,5 +366,27 @@ void pointsDistance() {
     expect(Point.zero().distanceTo(Point(0, 0, 5)), 5.0);
     expect(Point(11, -5, -2).distanceTo(Point(17, 4, 62)), 64.90762667052309);
     expect(Point.zero().distanceTo(Point.zero()), 0.0);
+  });
+}
+
+void nthRoot() {
+  test('nthRoot', () {
+    const eps = 0.00001;
+    // Success
+    expect(64.nthRoot(3), closeTo(4.0, eps));
+    expect(64.nthRoot(1), closeTo(64.0, eps));
+    expect((-64).nthRoot(3), closeTo(-4.0, eps));
+    // Slow
+    expect(64.nthRoot(64), closeTo(1.0671404007, eps));
+    // Exception
+    expect(() {
+      64.nthRoot(0);
+    }, throwsA(isA<CalculationException>()));
+    expect(() {
+      64.nthRoot(-3);
+    }, throwsA(isA<CalculationException>()));
+    expect(() {
+      (-64).nthRoot(2);
+    }, throwsA(isA<CalculationException>()));
   });
 }
