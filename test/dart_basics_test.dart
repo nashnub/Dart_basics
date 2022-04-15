@@ -293,11 +293,16 @@ void tokensCountTest() {
   test('tokensCount', () {
     final conversion = StringCoversion();
     // Simple
-    expect(conversion.tokensCount('one two two three three three'),
+    expect(
+        conversion
+            .tokensCount(['one', 'two', 'two', 'three', 'three', 'three']),
         {'one': 1, 'two': 2, 'three': 3});
-    expect(conversion.tokensCount('three two three one three two'),
+    expect(
+        conversion
+            .tokensCount(['three', 'two', 'three', 'one', 'three', 'two']),
         {'three': 3, 'two': 2, 'one': 1});
     // Empty
-    expect(conversion.tokensCount(''), {});
+    expect(conversion.tokensCount(['', '']), {'': 2});
+    expect(conversion.tokensCount([]), {});
   });
 }

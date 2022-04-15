@@ -17,13 +17,9 @@ class StringCoversion {
     return result;
   }
 
-  Map<String, int> tokensCount(String str) {
+  Map<String, int> tokensCount(List<String> strings) {
     final result = <String, int>{};
-    if (str.isEmpty) {
-      return result;
-    }
-    final tokens = str.split(' ');
-    for (var token in tokens) {
+    for (var token in strings) {
       final count = result[token];
       result[token] = (count ?? 0) + 1;
     }

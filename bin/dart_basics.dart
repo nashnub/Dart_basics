@@ -48,7 +48,7 @@ void main(List<String> arguments) {
 
   // Excercise 2.4 - tokens count
   {
-    const str = 'one two two three three three';
+    const str = ['one', 'two', 'two', 'three', 'three', 'three'];
     final result = StringCoversion().tokensCount(str);
     print('tokens count of $str is $result');
   }
