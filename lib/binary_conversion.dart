@@ -8,7 +8,7 @@ class BinaryConversion {
     }
     while (decimal > 0) {
       result.add(decimal % 2);
-      decimal = decimal >> 1;
+      decimal >>= 1;
     }
     return result.reversed.toList();
   }
