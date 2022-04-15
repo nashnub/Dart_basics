@@ -22,12 +22,12 @@ class DelimetersCalculator {
     if (index == numbers.length - 1) {
       return numbers[index];
     }
-    final number1 = numbers[index];
-    final number2 = _gcd(numbers, index + 1);
-    if ((number1 == invalid) || (number2 == invalid)) {
+    final number = numbers[index];
+    final gcd = _gcd(numbers, index + 1);
+    if (gcd == invalid) {
       return invalid;
     }
-    return _gcdTwoNumbers(number1, number2);
+    return _gcdTwoNumbers(number, gcd);
   }
 
   int _lcm(List<int> numbers, int index) {
