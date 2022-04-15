@@ -37,12 +37,12 @@ class DelimetersCalculator {
     if (index == numbers.length - 1) {
       return numbers[index];
     }
-    final number1 = numbers[index];
-    final number2 = _lcm(numbers, index + 1);
-    if ((number1 == invalid) || (number2 == invalid)) {
+    final number = numbers[index];
+    final lcm = _lcm(numbers, index + 1);
+    if (lcm == invalid) {
       return invalid;
     }
-    return _lcmTwoNumbers(number1, number2);
+    return _lcmTwoNumbers(number, lcm);
   }
 
   int _gcdTwoNumbers(int number1, int number2) {
