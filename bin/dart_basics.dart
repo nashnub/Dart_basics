@@ -45,4 +45,11 @@ void main(List<String> arguments) {
     final result = StringCoversion().stringToNums(str);
     print('nums of $str are $result');
   }
+
+  // Excercise 2.4 - tokens count
+  {
+    const str = 'one two two three three three';
+    final result = StringCoversion().tokensCount(str);
+    print('tokens count of $str is $result');
+  }
 }

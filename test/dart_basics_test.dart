@@ -10,6 +10,7 @@ void main() {
   primesTest();
   binaryTest();
   stringToNumsTest();
+  tokensCountTest();
 }
 
 void gcdTest() {
@@ -285,5 +286,18 @@ void stringToNumsTest() {
     expect(conversion.stringToNums(''), []);
     // Bad nums
     expect(conversion.stringToNums('23.45% k 6.7 -6.+56 7/3'), [6.7]);
+  });
+}
+
+void tokensCountTest() {
+  test('tokensCount', () {
+    final conversion = StringCoversion();
+    // Simple
+    expect(conversion.tokensCount('one two two three three three'),
+        {'one': 1, 'two': 2, 'three': 3});
+    expect(conversion.tokensCount('three two three one three two'),
+        {'three': 3, 'two': 2, 'one': 1});
+    // Empty
+    expect(conversion.tokensCount(''), {});
   });
 }
