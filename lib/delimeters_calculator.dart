@@ -2,17 +2,11 @@ class DelimetersCalculator {
   final invalid = -1;
 
   int gcd(List<int> numbers) {
-    if (numbers.isEmpty) {
-      return invalid;
-    }
-    return _gcd(numbers, 0);
+    return numbers.isEmpty ? invalid : _gcd(numbers, 0);
   }
 
   int lcm(List<int> numbers) {
-    if (numbers.isEmpty) {
-      return invalid;
-    }
-    return _lcm(numbers, 0);
+    return numbers.isEmpty ? invalid : _lcm(numbers, 0);
   }
 
   int _gcd(List<int> numbers, int index) {
@@ -24,10 +18,7 @@ class DelimetersCalculator {
       return number;
     }
     final gcd = _gcd(numbers, index + 1);
-    if (gcd == invalid) {
-      return invalid;
-    }
-    return _gcdTwoNumbers(number, gcd);
+    return gcd == invalid ? invalid : _gcdTwoNumbers(number, gcd);
   }
 
   int _lcm(List<int> numbers, int index) {
@@ -39,10 +30,7 @@ class DelimetersCalculator {
       return number;
     }
     final lcm = _lcm(numbers, index + 1);
-    if (lcm == invalid) {
-      return invalid;
-    }
-    return _lcmTwoNumbers(number, lcm);
+    return lcm == invalid ? invalid : _lcmTwoNumbers(number, lcm);
   }
 
   int _gcdTwoNumbers(int number1, int number2) {
@@ -66,6 +54,6 @@ class DelimetersCalculator {
     if (gcd == invalid) {
       return invalid;
     }
-    return gcd != 0 ? number1.abs() * number2.abs() ~/ gcd : 0;
+    return gcd == 0 ? 0 : number1.abs() * number2.abs() ~/ gcd;
   }
 }
