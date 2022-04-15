@@ -2,6 +2,7 @@ import 'package:dart_basics/delimeters_calculator.dart';
 import 'package:dart_basics/primes.dart';
 import 'package:dart_basics/binary_conversion.dart';
 import 'package:dart_basics/string_conversion.dart';
+import 'package:dart_basics/point.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -12,6 +13,7 @@ void main() {
   stringToNumsTest();
   tokensCountTest();
   digitsCount();
+  pointsDistance();
 }
 
 void gcdTest() {
@@ -352,5 +354,15 @@ void digitsCount() {
     // Empty
     expect(conversion.digitsCount(['', '']), <int>{});
     expect(conversion.digitsCount([]), <int>{});
+  });
+}
+
+void pointsDistance() {
+  test('pointsDistance', () {
+    expect(Point.zero().distanceTo(Point(5, 0, 0)), 5.0);
+    expect(Point.zero().distanceTo(Point(0, 5, 0)), 5.0);
+    expect(Point.zero().distanceTo(Point(0, 0, 5)), 5.0);
+    expect(Point(11, -5, -2).distanceTo(Point(17, 4, 62)), 64.90762667052309);
+    expect(Point.zero().distanceTo(Point.zero()), 0.0);
   });
 }

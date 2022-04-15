@@ -2,6 +2,7 @@ import 'package:dart_basics/binary_conversion.dart';
 import 'package:dart_basics/delimeters_calculator.dart';
 import 'package:dart_basics/primes.dart';
 import 'package:dart_basics/string_conversion.dart';
+import 'package:dart_basics/point.dart';
 
 void main(List<String> arguments) {
   // Excercise 2.1 - gcd
@@ -53,10 +54,18 @@ void main(List<String> arguments) {
     print('tokens count of $str is $result');
   }
 
-  // Excercise 2.4 - digits count
+  // Excercise 2.5 - digits count
   {
     const str = ['one', 'two', 'two', 'three', 'three', 'three'];
     final result = StringCoversion().digitsCount(str);
     print('digits count of $str is $result');
+  }
+
+  // Excercise 2.6 - points distance
+  {
+    final point1 = Point(0, 0, 0);
+    final point2 = Point(1, 1, 1);
+    final result = point1.distanceTo(point2);
+    print('distance between two points is $result');
   }
 }
