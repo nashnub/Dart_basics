@@ -19,10 +19,10 @@ class DelimetersCalculator {
     if (index.isNegative) {
       return 0;
     }
-    if (index == numbers.length - 1) {
-      return numbers[index];
-    }
     final number = numbers[index];
+    if (index == numbers.length - 1) {
+      return number;
+    }
     final gcd = _gcd(numbers, index + 1);
     if (gcd == invalid) {
       return invalid;
@@ -34,10 +34,10 @@ class DelimetersCalculator {
     if (index.isNegative) {
       return 0;
     }
-    if (index == numbers.length - 1) {
-      return numbers[index];
-    }
     final number = numbers[index];
+    if (index == numbers.length - 1) {
+      return number;
+    }
     final lcm = _lcm(numbers, index + 1);
     if (lcm == invalid) {
       return invalid;
