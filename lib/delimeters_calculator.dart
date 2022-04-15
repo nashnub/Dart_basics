@@ -1,13 +1,9 @@
 class DelimetersCalculator {
   final invalid = -1;
 
-  int gcd(List<int> numbers) {
-    return numbers.isEmpty ? invalid : _gcd(numbers, 0);
-  }
+  int gcd(List<int> numbers) => numbers.isEmpty ? invalid : _gcd(numbers, 0);
 
-  int lcm(List<int> numbers) {
-    return numbers.isEmpty ? invalid : _lcm(numbers, 0);
-  }
+  int lcm(List<int> numbers) => numbers.isEmpty ? invalid : _lcm(numbers, 0);
 
   int _gcd(List<int> numbers, int index) {
     if (index.isNegative) {
@@ -40,11 +36,9 @@ class DelimetersCalculator {
     return _gcdTwoNumbersRecursion(number1.abs(), number2.abs());
   }
 
-  int _gcdTwoNumbersRecursion(int number1, int number2) {
-    return number2 != 0
-        ? _gcdTwoNumbersRecursion(number2, number1 % number2)
-        : number1;
-  }
+  int _gcdTwoNumbersRecursion(int number1, int number2) => number2 != 0
+      ? _gcdTwoNumbersRecursion(number2, number1 % number2)
+      : number1;
 
   int _lcmTwoNumbers(int number1, int number2) {
     if ((number1 == 0) || (number2 == 0)) {
