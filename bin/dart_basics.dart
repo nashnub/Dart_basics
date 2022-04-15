@@ -4,6 +4,7 @@ import 'package:dart_basics/primes.dart';
 import 'package:dart_basics/string_conversion.dart';
 import 'package:dart_basics/point.dart';
 import 'package:dart_basics/math.dart';
+import 'package:dart_basics/users.dart';
 
 void main(List<String> arguments) {
   // Excercise 2.1 - gcd
@@ -76,5 +77,15 @@ void main(List<String> arguments) {
     const power = 3;
     final result = number.nthRoot(3);
     print('${power}th root of $number equals $result');
+  }
+
+  // Excercise 2.8 - users
+  {
+    final manager = UserManager();
+    manager.addUser(GeneralUser('user1@simple.com'));
+    manager.addUser(GeneralUser('user2@simple.com'));
+    manager.addUser(AdminUser('admin@admin.com'));
+    final result = manager.getUsers();
+    print('users are $result');
   }
 }

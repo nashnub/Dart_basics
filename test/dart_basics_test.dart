@@ -4,6 +4,7 @@ import 'package:dart_basics/binary_conversion.dart';
 import 'package:dart_basics/string_conversion.dart';
 import 'package:dart_basics/point.dart';
 import 'package:dart_basics/math.dart';
+import 'package:dart_basics/users.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -13,9 +14,10 @@ void main() {
   binaryTest();
   stringToNumsTest();
   tokensCountTest();
-  digitsCount();
-  pointsDistance();
-  nthRoot();
+  digitsCountTest();
+  pointsDistanceTest();
+  nthRootTest();
+  usersTest();
 }
 
 void gcdTest() {
@@ -312,7 +314,7 @@ void tokensCountTest() {
   });
 }
 
-void digitsCount() {
+void digitsCountTest() {
   test('digitsCount', () {
     final conversion = StringCoversion();
     // Simple
@@ -359,7 +361,7 @@ void digitsCount() {
   });
 }
 
-void pointsDistance() {
+void pointsDistanceTest() {
   test('pointsDistance', () {
     expect(Point.zero().distanceTo(Point(5, 0, 0)), 5.0);
     expect(Point.zero().distanceTo(Point(0, 5, 0)), 5.0);
@@ -369,7 +371,7 @@ void pointsDistance() {
   });
 }
 
-void nthRoot() {
+void nthRootTest() {
   test('nthRoot', () {
     const eps = 0.00001;
     // Success
@@ -388,5 +390,32 @@ void nthRoot() {
     expect(() {
       (-64).nthRoot(2);
     }, throwsA(isA<CalculationException>()));
+  });
+}
+
+void usersTest() {
+  test('users', () {
+    final manager = UserManager();
+    const email1 = 'u1@e.com';
+    const email2 = 'u2@e.com';
+    const email3 = 'a1@a.com';
+    const email4 = 'a2@a.com';
+    final user1 = GeneralUser(email1);
+    final user2 = GeneralUser(email2);
+    final user3 = AdminUser(email3);
+    final user4 = AdminUser(email4);
+    expect(manager.getUsers(), []);
+    manager.addUser(user1);
+    expect(manager.getUsers(), [email1]);
+    manager.addUser(user2);
+    expect(manager.getUsers(), [email1, email2]);
+    manager.addUser(user3);
+    expect(manager.getUsers(), [email1, email2, 'a.com']);
+    manager.addUser(user4);
+    expect(manager.getUsers(), [email1, email2, 'a.com', 'a.com']);
+    manager.removeUser(user3);
+    expect(manager.getUsers(), [email1, email2, 'a.com']);
+    manager.removeUser(user1);
+    expect(manager.getUsers(), [email2, 'a.com']);
   });
 }
