@@ -64,12 +64,10 @@ class DelimetersCalculator {
     }
     number1 = number1.abs();
     number2 = number2.abs();
-    final number = _gcdTwoNumbers(number1, number2);
-    if (number == invalid) {
+    final gcd = _gcdTwoNumbers(number1, number2);
+    if (gcd == invalid) {
       return invalid;
     }
-    return number != 0
-        ? number1 * number2 ~/ _gcdTwoNumbers(number1, number2)
-        : 0;
+    return gcd != 0 ? number1 * number2 ~/ gcd : 0;
   }
 }
