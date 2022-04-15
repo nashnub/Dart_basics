@@ -8,7 +8,7 @@ class Primes {
     }
     while (number % 2 == 0) {
       result.add(2);
-      number = number >> 1;
+      number >>= 1;
     }
     for (var i = 3; i <= math.sqrt(number); i += 2) {
       while (number % i == 0) {
