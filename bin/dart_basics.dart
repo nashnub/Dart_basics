@@ -52,4 +52,11 @@ void main(List<String> arguments) {
     final result = StringCoversion().tokensCount(str);
     print('tokens count of $str is $result');
   }
+
+  // Excercise 2.4 - digits count
+  {
+    const str = ['one', 'two', 'two', 'three', 'three', 'three'];
+    final result = StringCoversion().digitsCount(str);
+    print('digits count of $str is $result');
+  }
 }

@@ -11,6 +11,7 @@ void main() {
   binaryTest();
   stringToNumsTest();
   tokensCountTest();
+  digitsCount();
 }
 
 void gcdTest() {
@@ -304,5 +305,52 @@ void tokensCountTest() {
     // Empty
     expect(conversion.tokensCount(['', '']), {'': 2});
     expect(conversion.tokensCount([]), {});
+  });
+}
+
+void digitsCount() {
+  test('digitsCount', () {
+    final conversion = StringCoversion();
+    // Simple
+    expect(
+        conversion
+            .digitsCount(['one', 'two', 'two', 'three', 'three', 'three']),
+        <int>{1, 2, 3});
+    expect(
+        conversion
+            .digitsCount(['three', 'two', 'three', 'one', 'three', 'two']),
+        <int>{3, 2, 1});
+    // All
+    expect(
+        conversion.digitsCount([
+          'zero',
+          'one',
+          'two',
+          'three',
+          'four',
+          'five',
+          'six',
+          'seven',
+          'eight',
+          'nine'
+        ]),
+        <int>{0, 1, 2, 3, 4, 5, 6, 7, 8, 9});
+    expect(
+        conversion.digitsCount([
+          'Zero',
+          'ONe',
+          'Two',
+          'tHrEe',
+          'foUR',
+          'FiVE',
+          'sIx',
+          'SEVEN',
+          'eIGHt',
+          'NIne'
+        ]),
+        <int>{0, 1, 2, 3, 4, 5, 6, 7, 8, 9});
+    // Empty
+    expect(conversion.digitsCount(['', '']), <int>{});
+    expect(conversion.digitsCount([]), <int>{});
   });
 }
